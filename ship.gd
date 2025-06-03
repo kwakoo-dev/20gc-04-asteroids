@@ -15,10 +15,9 @@ func _physics_process(delta: float) -> void:
 	rotation = thrust_direction.angle()
 	if Input.is_action_pressed("accelerate"):
 		velocity += thrust_power * thrust_direction * delta 
-	
-	
-	
-	move_and_slide()
+	var collision : KinematicCollision2D = move_and_collide(velocity * delta)
+	if collision:
+		velocity = velocity.bounce(collision.get_normal()) * 0.5
 	wrap_ship()
 
 func wrap_ship() -> void:
