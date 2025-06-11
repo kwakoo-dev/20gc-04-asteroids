@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdr6sln4fnekw"
-path="res://.godot/imported/playerShip3_green.png-b4a079785f6b76fe82dd269ed969d564.ctex"
+uid="uid://bdk1qtx5iy1k4"
+path="res://.godot/imported/icon.svg-8d40b6256e7462a93d769bdaa0f9b7f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://playerShip3_green.png"
-dest_files=["res://.godot/imported/playerShip3_green.png-b4a079785f6b76fe82dd269ed969d564.ctex"]
+source_file="res://gfx/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-8d40b6256e7462a93d769bdaa0f9b7f2.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

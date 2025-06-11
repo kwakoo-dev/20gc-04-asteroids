@@ -1,0 +1,19 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://ca8qh4msvi577"]
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_j3pel"]
+resource_name = "Distortion"
+mode = 3
+pre_gain = 10.96
+keep_hf_hz = 7261.0
+drive = 0.84
+post_gain = -8.07
+
+[resource]
+bus/1/name = &"SFX"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectDistortion_j3pel")
+bus/1/effect/0/enabled = true

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://ben3elpy1lx6c"]
+
+[ext_resource type="PackedScene" uid="uid://jbr4385ve2fd" path="res://scenes/ship.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://bddramc6psasf" path="res://scripts/game.gd" id="1_feb5d"]
+[ext_resource type="Texture2D" uid="uid://b63umytcy83sh" path="res://gfx/darkPurple.png" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://b2ivcxu82jb4x" path="res://scenes/asteroid.tscn" id="2_lbhrr"]
+
+[sub_resource type="Curve2D" id="Curve2D_80nbo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -64, -64, 0, 0, 0, 0, 1216, -64, 0, 0, 0, 0, 1216, 704, 0, 0, 0, 0, -64, 704, 0, 0, 0, 0, -64, -64)
+}
+point_count = 5
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_feb5d")
+asteroid_scene = ExtResource("2_lbhrr")
+
+[node name="DarkPurple" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(592, 376)
+texture = ExtResource("2_e2o6t")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 1000)
+
+[node name="Ship" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(563, 347)
+
+[node name="AsteroidSpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_80nbo")
+
+[node name="SpawnPoint" type="PathFollow2D" parent="AsteroidSpawnPath"]
+position = Vector2(-64, -64)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

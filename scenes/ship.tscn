@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://jbr4385ve2fd"]
+
+[ext_resource type="Script" uid="uid://dimbuuyw3r3x6" path="res://scripts/ship.gd" id="1_4cq66"]
+[ext_resource type="Texture2D" uid="uid://cdr6sln4fnekw" path="res://gfx/playerShip3_green.png" id="1_l3rv8"]
+[ext_resource type="PackedScene" uid="uid://c4lq005nv5j8j" path="res://scenes/laser.tscn" id="2_4tobq"]
+[ext_resource type="AudioStream" uid="uid://ckuxhgcarmys7" path="res://sfx/Shoot44.wav" id="4_tfsc7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4cq66"]
+radius = 13.9284
+
+[node name="Ship" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_4cq66")
+laser_scene = ExtResource("2_4tobq")
+
+[node name="ShiipSprite" type="Sprite2D" parent="."]
+position = Vector2(6, 0)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_l3rv8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_4cq66")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="Shooter" type="Marker2D" parent="."]
+position = Vector2(24, 0)
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tfsc7")
+bus = &"SFX"

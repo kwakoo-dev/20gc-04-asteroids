@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b63umytcy83sh"
-path="res://.godot/imported/darkPurple.png-0ecf717c7947506bb3f00595ef57a0ed.ctex"
+path="res://.godot/imported/darkPurple.png-fa7645bb9699ae10d2beafacb7ef313c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://darkPurple.png"
-dest_files=["res://.godot/imported/darkPurple.png-0ecf717c7947506bb3f00595ef57a0ed.ctex"]
+source_file="res://gfx/darkPurple.png"
+dest_files=["res://.godot/imported/darkPurple.png-fa7645bb9699ae10d2beafacb7ef313c.ctex"]
 
 [params]
 

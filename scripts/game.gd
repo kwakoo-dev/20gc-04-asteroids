@@ -1,6 +1,7 @@
 extends Node2D
 
-var asteroid_scene : PackedScene = preload("res://asteroid.tscn")
+@export
+var asteroid_scene : PackedScene
 
 @onready
 var spawn_point = $AsteroidSpawnPath/SpawnPoint
