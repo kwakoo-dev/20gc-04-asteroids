@@ -10,7 +10,7 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_u87q6"]
 radius = 40.7922
 
-[node name="Asteroid" type="RigidBody2D" groups=["asteroids"]]
+[node name="Asteroid_big" type="RigidBody2D" groups=["asteroids", "big"]]
 collision_layer = 2
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_p0ukn")
@@ -19,7 +19,7 @@ contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("1_6mo6b")
 
-[node name="MeteorGreyBig1" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_t4se3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

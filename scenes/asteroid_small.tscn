@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm6gkg13wus6c"]
+
+[ext_resource type="Script" uid="uid://c5aspwul5a5rf" path="res://scripts/asteroid.gd" id="1_x7wxb"]
+[ext_resource type="Texture2D" uid="uid://d0shf1rqud72j" path="res://gfx/meteorGrey_small1.png" id="2_x7wxb"]
+[ext_resource type="AudioStream" uid="uid://cvvkxnkt1q40h" path="res://sfx/Boom74.wav" id="3_kci4s"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p0ukn"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u87q6"]
+radius = 12.0
+
+[node name="Asteroid_small" type="RigidBody2D" groups=["asteroids", "small"]]
+collision_layer = 2
+collision_mask = 7
+mass = 0.6
+physics_material_override = SubResource("PhysicsMaterial_p0ukn")
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 100
+script = ExtResource("1_x7wxb")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_x7wxb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u87q6")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kci4s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

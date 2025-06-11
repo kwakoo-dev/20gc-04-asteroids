@@ -19,6 +19,9 @@ config/icon="res://gfx/icon.svg"
 
 asteroids=""
 bullets=""
+small=""
+medium=""
+big=""
 
 [input]
 
