@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ben3elpy1lx6c"]
+[gd_scene load_steps=9 format=3 uid="uid://ben3elpy1lx6c"]
 
 [ext_resource type="PackedScene" uid="uid://jbr4385ve2fd" path="res://scenes/ship.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://bddramc6psasf" path="res://scripts/game.gd" id="1_feb5d"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2ivcxu82jb4x" path="res://scenes/asteroid_big.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://db5656ri0id44" path="res://scenes/asteroid_medium.tscn" id="3_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bm6gkg13wus6c" path="res://scenes/asteroid_small.tscn" id="4_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://c88ye3yywciop" path="res://scenes/explosion_particles.tscn" id="5_u5sy4"]
 
 [sub_resource type="Curve2D" id="Curve2D_80nbo"]
 _data = {
@@ -18,6 +19,7 @@ script = ExtResource("1_feb5d")
 asteroid_scene_big = ExtResource("2_lbhrr")
 asteroid_scene_medium = ExtResource("3_p57ef")
 asteroid_scene_small = ExtResource("4_u5sy4")
+explosion_scene = ExtResource("5_u5sy4")
 
 [node name="DarkPurple" type="Sprite2D" parent="."]
 texture_filter = 1

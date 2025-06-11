@@ -1,9 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://jbr4385ve2fd"]
+[gd_scene load_steps=8 format=3 uid="uid://jbr4385ve2fd"]
 
 [ext_resource type="Script" uid="uid://dimbuuyw3r3x6" path="res://scripts/ship.gd" id="1_4cq66"]
 [ext_resource type="Texture2D" uid="uid://cdr6sln4fnekw" path="res://gfx/playerShip3_green.png" id="1_l3rv8"]
 [ext_resource type="PackedScene" uid="uid://c4lq005nv5j8j" path="res://scenes/laser.tscn" id="2_4tobq"]
 [ext_resource type="AudioStream" uid="uid://ckuxhgcarmys7" path="res://sfx/Shoot44.wav" id="4_tfsc7"]
+[ext_resource type="Texture2D" uid="uid://2k3tkae7flby" path="res://gfx/fire07.png" id="5_gudjc"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gudjc"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2, 2, 0)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 98, 0)
+turbulence_noise_strength = 1.8
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4cq66"]
 radius = 13.9284
@@ -12,6 +24,14 @@ radius = 13.9284
 motion_mode = 1
 script = ExtResource("1_4cq66")
 laser_scene = ExtResource("2_4tobq")
+
+[node name="ThrustParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-19, 0)
+rotation = 1.5708
+texture = ExtResource("5_gudjc")
+lifetime = 0.33
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_gudjc")
 
 [node name="ShiipSprite" type="Sprite2D" parent="."]
 position = Vector2(6, 0)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c88ye3yywciop"]
+
+[ext_resource type="Texture2D" uid="uid://iahiatahsx8s" path="res://gfx/star3.png" id="1_jn38s"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1fltu"]
+radial_velocity_min = 70.92
+radial_velocity_max = 70.92
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 74.11
+linear_accel_max = 74.11
+radial_accel_min = 89.36
+radial_accel_max = 89.36
+
+[node name="ExplosionParticles" type="GPUParticles2D"]
+emitting = false
+amount = 64
+texture = ExtResource("1_jn38s")
+lifetime = 3.84
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_1fltu")

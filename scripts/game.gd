@@ -6,6 +6,8 @@ var asteroid_scene_big : PackedScene
 var asteroid_scene_medium : PackedScene
 @export
 var asteroid_scene_small : PackedScene
+@export
+var explosion_scene : PackedScene
 
 @onready
 var spawn_point = $AsteroidSpawnPath/SpawnPoint
@@ -41,10 +43,10 @@ func spawn_small_asteroid(last_position : Vector2, last_rotation : float) -> voi
 	add_child(asteroid_1)
 	add_child(asteroid_2)
 
-func create_asteroid(asteroid_scene : PackedScene, position : Vector2, direction : Vector2, destroyed_callback : Callable = Callable()) -> Asteroid:
+func create_asteroid(asteroid_scene : PackedScene, new_position : Vector2, direction : Vector2, destroyed_callback : Callable = Callable()) -> Asteroid:
 	var asteroid : Asteroid = asteroid_scene.instantiate()
-	asteroid.position = position
-	asteroid.asteroid_destroyed.connect(destroyed_callback)
+	asteroid.position = new_position
+	if destroyed_callback:
+		asteroid.asteroid_destroyed.connect(destroyed_callback)
 	asteroid.start_moving(direction)
 	return asteroid
-	

@@ -39,8 +39,9 @@ func wrap_asteroid(state: PhysicsDirectBodyState2D) -> void:
 func explode() -> void:
 	if !alive:
 		return
+	$ExplosionParticles.emitting = true
 	alive = false
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.set_deferred("disabled", true)
 	$ExplosionSound.play()
 	await $ExplosionSound.finished
 	asteroid_destroyed.emit(position, get_global_transform().get_rotation())

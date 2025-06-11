@@ -12,7 +12,7 @@ var thrust_power : float = 200.0
 var max_speed : float = 500
 
 @onready
-var wrap_margin : float = ($ShiipSprite.get_rect().size.x + $ShiipSprite.get_rect().size.y) / 4.0
+var wrap_margin : float = ($ShiipSprite.get_rect().size.x + $ShiipSprite.get_rect().size.y) / 8.0
 @onready
 var viewport : Vector2 = get_viewport_rect().size
 
@@ -27,14 +27,11 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.bounce(collision.get_normal()) * 0.5
 	wrap_ship()
 
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("shoot"):
-		#shoot_laser()
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("shoot") && Time.get_ticks_msec() > last_shoot_msec + shoot_delay:
 		last_shoot_msec = Time.get_ticks_msec()
 		shoot_laser()
+	$ThrustParticles.emitting = Input.is_action_pressed("accelerate")		
 
 func shoot_laser() -> void:
 	var laser : Laser = laser_scene.instantiate()
