@@ -1,5 +1,6 @@
 key,en,pl
 GET_READY,Get Ready!,Przygotuj się!
-TITLE,Asteroids!,
+TITLE,Space Rocks Infinite!,
 START_BUTTON,Start,Start
 EXIT_BUTTON,Exit,Wyjście
+GAME_OVER,Game Over!,Koniec Gry!
