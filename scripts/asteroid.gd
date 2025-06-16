@@ -3,8 +3,7 @@ class_name Asteroid
 
 @export
 var asteroid_initial_force : int = 10000
-
-signal asteroid_destroyed(last_position : Vector2, last_rotation : float)
+var asteroid_size : Enums.AsteroidSize
 
 var current_direction : Vector2 = Vector2.RIGHT
 var rotation_speed : float = 1000
@@ -19,13 +18,15 @@ var alive = true
 func start_moving(start_direction : Vector2) -> void:
 	rotation_speed = randf_range(-1, 1)
 	apply_force(start_direction.normalized() * asteroid_initial_force)
-	
 
 func _physics_process(delta: float) -> void:
 	rotate(rotation_speed * delta)
 	var collision : KinematicCollision2D  = move_and_collide(current_direction * delta)
 	if collision:
 		linear_velocity = linear_velocity.bounce(collision.get_normal())
+		var collider = collision.get_collider()
+		if collider && collider.is_in_group("ships"):
+			$ShipCollide.play()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	wrap_asteroid(state)
@@ -44,5 +45,5 @@ func explode() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 	$ExplosionSound.play()
 	await $ExplosionSound.finished
-	asteroid_destroyed.emit(position, get_global_transform().get_rotation())
+	SignalBus.asteroid_destroyed.emit(position, get_global_transform().get_rotation(), asteroid_size)
 	queue_free()

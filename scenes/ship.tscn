@@ -20,7 +20,7 @@ turbulence_noise_strength = 1.8
 [sub_resource type="CircleShape2D" id="CircleShape2D_4cq66"]
 radius = 13.9284
 
-[node name="Ship" type="CharacterBody2D"]
+[node name="Ship" type="CharacterBody2D" groups=["ships"]]
 motion_mode = 1
 script = ExtResource("1_4cq66")
 laser_scene = ExtResource("2_4tobq")
@@ -49,6 +49,6 @@ position = Vector2(1, 0)
 [node name="Shooter" type="Marker2D" parent="."]
 position = Vector2(24, 0)
 
-[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_tfsc7")
 bus = &"SFX"

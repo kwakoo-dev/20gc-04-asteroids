@@ -22,9 +22,7 @@ func _physics_process(delta: float) -> void:
 	rotation = thrust_direction.angle()
 	if Input.is_action_pressed("accelerate"):
 		velocity = (velocity + thrust_power * thrust_direction * delta).limit_length(max_speed)
-	var collision : KinematicCollision2D = move_and_collide(velocity * delta)
-	if collision:
-		velocity = velocity.bounce(collision.get_normal()) * 0.5
+	move_and_collide(velocity * delta)
 	wrap_ship()
 
 func _process(_delta: float) -> void:
@@ -38,7 +36,7 @@ func shoot_laser() -> void:
 	laser.global_position =  $Shooter.global_position
 	laser.global_rotation = $Shooter.global_rotation
 	get_tree().root.add_child(laser)
-	$ShootSound.play()	
+	$ShootSound.play()
 
 func wrap_ship() -> void:
 	position.x = wrapf(position.x, -wrap_margin, viewport.x + wrap_margin)

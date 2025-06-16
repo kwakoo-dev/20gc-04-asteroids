@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ben3elpy1lx6c"]
+[gd_scene load_steps=11 format=3 uid="uid://ben3elpy1lx6c"]
 
 [ext_resource type="PackedScene" uid="uid://jbr4385ve2fd" path="res://scenes/ship.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://bddramc6psasf" path="res://scripts/game.gd" id="1_feb5d"]
@@ -7,10 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://db5656ri0id44" path="res://scenes/asteroid_medium.tscn" id="3_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bm6gkg13wus6c" path="res://scenes/asteroid_small.tscn" id="4_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://c88ye3yywciop" path="res://scenes/explosion_particles.tscn" id="5_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://s0n45sdxycwt" path="res://scenes/get_ready.tscn" id="8_gee14"]
+[ext_resource type="AudioStream" uid="uid://bswrxnuw7ulty" path="res://sfx/PowerUp113.wav" id="9_0tnpc"]
 
 [sub_resource type="Curve2D" id="Curve2D_80nbo"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -64, -64, 0, 0, 0, 0, 1216, -64, 0, 0, 0, 0, 1216, 704, 0, 0, 0, 0, -64, 704, 0, 0, 0, 0, -64, -64)
+"points": PackedVector2Array(0, 0, 0, 0, -64, -64, 0, 0, 0, 0, 928, -64, 0, 0, 0, 0, 928, 928, 0, 0, 0, 0, -64, 928, 0, 0, 0, 0, -64, -64)
 }
 point_count = 5
 
@@ -20,17 +22,19 @@ asteroid_scene_big = ExtResource("2_lbhrr")
 asteroid_scene_medium = ExtResource("3_p57ef")
 asteroid_scene_small = ExtResource("4_u5sy4")
 explosion_scene = ExtResource("5_u5sy4")
+metadata/_edit_vertical_guides_ = [432.0]
+metadata/_edit_horizontal_guides_ = [432.0]
 
 [node name="DarkPurple" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 2
-position = Vector2(592, 376)
+position = Vector2(464, 456)
 texture = ExtResource("2_e2o6t")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
 
 [node name="Ship" parent="." instance=ExtResource("1_80nbo")]
-position = Vector2(563, 347)
+position = Vector2(432, 432)
 
 [node name="AsteroidSpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_80nbo")
@@ -41,4 +45,27 @@ position = Vector2(-64, -64)
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="GetReady" parent="." instance=ExtResource("8_gee14")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 432.0
+offset_top = 576.0
+offset_right = 432.0
+offset_bottom = 576.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GetReadyTimer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="AsteroidSpawnSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_0tnpc")
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="GetReadyTimer" to="." method="_on_get_ready_timer_timeout"]

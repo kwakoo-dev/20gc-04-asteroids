@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2ivcxu82jb4x"]
+[gd_scene load_steps=8 format=3 uid="uid://b2ivcxu82jb4x"]
 
 [ext_resource type="Script" uid="uid://c5aspwul5a5rf" path="res://scripts/asteroid.gd" id="1_6mo6b"]
 [ext_resource type="Texture2D" uid="uid://dlxv0g000viee" path="res://gfx/meteorGrey_big1.png" id="2_t4se3"]
 [ext_resource type="AudioStream" uid="uid://cvvkxnkt1q40h" path="res://sfx/Boom74.wav" id="3_t4se3"]
 [ext_resource type="PackedScene" uid="uid://c88ye3yywciop" path="res://scenes/explosion_particles.tscn" id="4_5ah36"]
+[ext_resource type="AudioStream" uid="uid://ctnsm27k4g7b5" path="res://sfx/Hit49.wav" id="5_unc20"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p0ukn"]
 bounce = 1.0
@@ -30,5 +31,8 @@ shape = SubResource("CircleShape2D_u87q6")
 stream = ExtResource("3_t4se3")
 
 [node name="ExplosionParticles" parent="." instance=ExtResource("4_5ah36")]
+
+[node name="ShipCollide" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_unc20")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
