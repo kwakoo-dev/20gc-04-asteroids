@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dalwls4x4c2n7"]
+
+[ext_resource type="Theme" uid="uid://chuisfsdjykd" path="res://ui_theme.tres" id="1_wx6d6"]
+[ext_resource type="Script" uid="uid://bkdy8y3hb7y28" path="res://scripts/life_bar.gd" id="2_nkuye"]
+
+[node name="LifeBar" type="ProgressBar"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -16.0
+offset_right = -696.0
+offset_bottom = -848.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_wx6d6")
+value = 100.0
+script = ExtResource("2_nkuye")

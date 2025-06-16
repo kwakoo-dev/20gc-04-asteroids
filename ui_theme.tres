@@ -1,5 +1,10 @@
-[gd_resource type="Theme" format=3 uid="uid://chuisfsdjykd"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://chuisfsdjykd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmjyp"]
+bg_color = Color(2.21401e-06, 0.695795, 0.617024, 1)
 
 [resource]
 default_font_size = 24
 BoxContainer/constants/separation = 12
+ProgressBar/colors/font_color = Color(0.931366, 0.889956, 0.673538, 1)
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_dmjyp")

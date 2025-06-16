@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 		linear_velocity = linear_velocity.bounce(collision.get_normal())
 		var collider = collision.get_collider()
 		if collider && collider.is_in_group("ships"):
+			SignalBus.ship_asteroid_collided.emit()
 			$ShipCollide.play()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:

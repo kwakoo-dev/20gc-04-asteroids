@@ -24,6 +24,10 @@ SignalBus="*res://scripts/signal_bus.gd"
 window/size/viewport_width=864
 window/size/viewport_height=864
 
+[editor]
+
+movie_writer/movie_file="D:/godot_projects/20_games_challenge/asteroids.avi"
+
 [global_group]
 
 asteroids=""

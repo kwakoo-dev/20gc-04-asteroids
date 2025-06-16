@@ -14,7 +14,10 @@ var spawn_point = $AsteroidSpawnPath/SpawnPoint
 @onready
 var ship = $Ship
 @export
-var max_asteroid_count = 5
+var max_asteroid_count = 3
+
+var asteroids_destroyed : int = 0
+var score : int = 0
 
 func _ready() -> void:
 	SignalBus.asteroid_destroyed.connect(_on_asteroid_destroyed)
@@ -25,11 +28,18 @@ func _on_get_ready_timer_timeout() -> void:
 	get_tree().paused = false
 
 func _on_asteroid_destroyed(last_position : Vector2, last_rotation : float, size : Enums.AsteroidSize) -> void:
+	asteroids_destroyed += 1
+	$LevelUpProgress.value += 10
 	match size:
 		Enums.AsteroidSize.BIG:
+			score += 100
 			spawn_medium_asteroid(last_position, last_rotation)
 		Enums.AsteroidSize.MEDIUM:
+			score += 200
 			spawn_small_asteroid(last_position, last_rotation)
+		Enums.AsteroidSize.SMALL:
+			score += 400
+	$ScoreLabel.text = str(score)
 
 func _on_spawn_timer_timeout() -> void:
 	var asteroids_count : int = get_tree().get_nodes_in_group("asteroids").size()
@@ -77,3 +87,9 @@ func instantiate_asteroid(asteroid_size : Enums.AsteroidSize) -> Asteroid:
 		_:
 			push_error("Unknown value of Enums.AsteroidSize: " + str(asteroid_size))
 			return asteroid_scene_big.instantiate()
+
+
+func _on_level_up_progress_value_changed(value: float) -> void:
+	if value >= 100:
+		max_asteroid_count += 1
+		$LevelUpProgress.value = 0
