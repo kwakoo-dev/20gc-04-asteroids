@@ -1,5 +1,5 @@
 extends RigidBody2D
-class_name Asteroid
+class_name Asteroid2
 
 @export
 var asteroid_initial_force : int = 10000
@@ -11,7 +11,7 @@ var rotation_speed : float = 1000
 @onready
 var wrap_margin : float = 32.0
 @onready
-var viewport : Vector2 = Vector2(864, 864)
+var viewport : Vector2 = get_viewport_rect().size
 
 var alive = true
 
@@ -20,10 +20,10 @@ func start_moving(start_direction : Vector2) -> void:
 	apply_force(start_direction.normalized() * asteroid_initial_force)
 
 func _physics_process(delta: float) -> void:
-	pass
-	#rotate(rotation_speed * delta)
+	rotate(rotation_speed * delta)
 	var collision : KinematicCollision2D  = move_and_collide(current_direction * delta)
 	if collision:
+		linear_velocity = linear_velocity.bounce(collision.get_normal())
 		var collider = collision.get_collider()
 		if collider && collider.is_in_group("ships"):
 			SignalBus.ship_asteroid_collided.emit()

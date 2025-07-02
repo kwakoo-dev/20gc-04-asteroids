@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://mvvnqa3u1oyw"]
+
+[ext_resource type="Script" uid="uid://ce2lnikmss13o" path="res://scripts/asteroid_2.gd" id="1_e6cmj"]
+[ext_resource type="AudioStream" uid="uid://cvvkxnkt1q40h" path="res://sfx/Boom74.wav" id="2_xkxpd"]
+[ext_resource type="PackedScene" uid="uid://c88ye3yywciop" path="res://scenes/explosion_particles.tscn" id="3_7k754"]
+[ext_resource type="AudioStream" uid="uid://ctnsm27k4g7b5" path="res://sfx/Hit49.wav" id="4_ay8rt"]
+
+[node name="Asteroid2" type="RigidBody2D"]
+script = ExtResource("1_e6cmj")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xkxpd")
+
+[node name="ExplosionParticles" parent="." instance=ExtResource("3_7k754")]
+
+[node name="ShipCollide" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ay8rt")

@@ -16,6 +16,7 @@ var ship = $Ship
 @export
 var max_asteroid_count = 3
 
+var level : int = 1
 var asteroids_destroyed : int = 0
 var score : int = 0
 
@@ -29,7 +30,7 @@ func _on_get_ready_timer_timeout() -> void:
 
 func _on_asteroid_destroyed(last_position : Vector2, last_rotation : float, size : Enums.AsteroidSize) -> void:
 	asteroids_destroyed += 1
-	$LevelUpProgress.value += 10
+	$SidePanel/LevelUpProgress.value += 10
 	match size:
 		Enums.AsteroidSize.BIG:
 			score += 100
@@ -39,7 +40,7 @@ func _on_asteroid_destroyed(last_position : Vector2, last_rotation : float, size
 			spawn_small_asteroid(last_position, last_rotation)
 		Enums.AsteroidSize.SMALL:
 			score += 400
-	$ScoreLabel.text = str(score)
+	$SidePanel/ScoreLabel.text = str(score)
 
 func _on_spawn_timer_timeout() -> void:
 	var asteroids_count : int = get_tree().get_nodes_in_group("asteroids").size()
@@ -91,5 +92,7 @@ func instantiate_asteroid(asteroid_size : Enums.AsteroidSize) -> Asteroid:
 
 func _on_level_up_progress_value_changed(value: float) -> void:
 	if value >= 100:
+		level += 1
 		max_asteroid_count += 1
-		$LevelUpProgress.value = 0
+		$SidePanel/LevelUpProgress.value = 0
+		$SidePanel/LevelUpProgress/Level.text = "LEVEL " + str(level)

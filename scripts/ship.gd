@@ -14,7 +14,7 @@ var max_speed : float = 500
 @onready
 var wrap_margin : float = ($ShiipSprite.get_rect().size.x + $ShiipSprite.get_rect().size.y) / 8.0
 @onready
-var viewport : Vector2 = get_viewport_rect().size
+var viewport : Vector2 = Vector2(864, 864)
 
 func _physics_process(delta: float) -> void:
 	var rotation_input : float = Input.get_axis("left", "right")
